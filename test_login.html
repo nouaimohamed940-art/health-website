@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار تسجيل الدخول</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+        }
+        
+        .test-accounts {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .test-accounts h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .account-item {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .account-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .account-role {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .account-credentials {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .login-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .login-btn {
+            width: 100%;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            background: #2980b9;
+        }
+        
+        .quick-login {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .quick-login h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .quick-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .quick-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+        
+        .quick-btn:hover {
+            background: #229954;
+        }
+        
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .instructions h4 {
+            margin-bottom: 10px;
+        }
+        
+        .instructions ol {
+            margin-right: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-key"></i> اختبار تسجيل الدخول</h1>
+            <p>جميع الحسابات تستخدم كلمة المرور: <strong>password</strong></p>
+        </div>
+        
+        <div class="instructions">
+            <h4><i class="fas fa-info-circle"></i> تعليمات الاختبار:</h4>
+            <ol>
+                <li>شغل ملف <code>FIX_LOGIN_PASSWORDS.sql</code> أولاً</li>
+                <li>استخدم أي من الحسابات أدناه</li>
+                <li>كلمة المرور لجميع الحسابات: <strong>password</strong></li>
+                <li>جرب تسجيل الدخول من صفحة <code>login.php</code></li>
+            </ol>
+        </div>
+        
+        <div class="test-accounts">
+            <h3><i class="fas fa-users"></i> حسابات الاختبار</h3>
+            
+            <div class="account-item">
+                <div class="account-role">سوبر أدمن</div>
+                <div class="account-credentials">
+                    <strong>اسم المستخدم:</strong> SUPER_ADMIN_001<br>
+                    <strong>كلمة المرور:</strong> password
+                </div>
+            </div>
+            
+            <div class="account-item">
+                <div class="account-role">مدير مستشفى</div>
+                <div class="account-credentials">
+                    <strong>اسم المستخدم:</strong> HOSP_MGR_KAMC_001<br>
+                    <strong>كلمة المرور:</strong> password
+                </div>
+            </div>
+            
+            <div class="account-item">
+                <div class="account-role">مدير مركز</div>
+                <div class="account-credentials">
+                    <strong>اسم المستخدم:</strong> CTR_MGR_KAMC_001<br>
+                    <strong>كلمة المرور:</strong> password
+                </div>
+            </div>
+            
+            <div class="account-item">
+                <div class="account-role">مدخل بيانات</div>
+                <div class="account-credentials">
+                    <strong>اسم المستخدم:</strong> DE_KAMC_001_A<br>
+                    <strong>كلمة المرور:</strong> password
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-form">
+            <h3><i class="fas fa-sign-in-alt"></i> تسجيل الدخول المباشر</h3>
+            <form action="login.php" method="POST">
+                <div class="form-group">
+                    <label for="username">اسم المستخدم:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">كلمة المرور:</label>
+                    <input type="password" id="password" name="password" value="password" required>
+                </div>
+                
+                <button type="submit" name="login" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+            </form>
+            
+            <div class="quick-login">
+                <h4>تسجيل دخول سريع:</h4>
+                <div class="quick-buttons">
+                    <button class="quick-btn" onclick="fillCredentials('SUPER_ADMIN_001')">سوبر أدمن</button>
+                    <button class="quick-btn" onclick="fillCredentials('HOSP_MGR_KAMC_001')">مدير مستشفى</button>
+                    <button class="quick-btn" onclick="fillCredentials('CTR_MGR_KAMC_001')">مدير مركز</button>
+                    <button class="quick-btn" onclick="fillCredentials('DE_KAMC_001_A')">مدخل بيانات</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function fillCredentials(username) {
+            document.getElementById('username').value = username;
+            document.getElementById('password').value = 'password';
+        }
+    </script>
+</body>
+</html>

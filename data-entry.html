@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدخال البيانات - نظام إدارة القوى العاملة الصحية</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-edit"></i>
+            </div>
+            <div class="loading-text">صفحة إدخال البيانات</div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>الصحة القابضة</h1>
+                    <p>نظام إدارة القوى العاملة الصحية</p>
+                </div>
+            </div>
+            <div class="header-info">
+                <div class="hospital-info">
+                    <i class="fas fa-building"></i>
+                    <span id="hospital-name">مستشفى الملك فهد التخصصي</span>
+                </div>
+                <div class="center-info">
+                    <i class="fas fa-users"></i>
+                    <span id="center-name">مركز الطب الباطني</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="data-entry.html" class="nav-item active">
+                <i class="fas fa-edit"></i>
+                <span>إدخال البيانات</span>
+            </a>
+            <a href="approval.html" class="nav-item">
+                <i class="fas fa-check-circle"></i>
+                <span>الاعتماد</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>التقارير</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users-cog"></i>
+                <span>إدارة المستخدمين</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h2 class="page-title">
+                <i class="fas fa-edit"></i>
+                إدخال البيانات
+            </h2>
+            <p class="page-subtitle">أدخل بيانات الموظفين والحركات اليومية</p>
+        </div>
+
+        <!-- Data Entry Forms -->
+        <div class="forms-container">
+            <!-- Employee Data Form -->
+            <div class="form-section">
+                <div class="form-header">
+                    <h3>
+                        <i class="fas fa-user-plus"></i>
+                        بيانات الموظف
+                    </h3>
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" onclick="clearForm('employeeForm')">
+                            <i class="fas fa-undo"></i>
+                            مسح النموذج
+                        </button>
+                    </div>
+                </div>
+                <form id="employeeForm" class="data-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employeeId">
+                                <i class="fas fa-id-card"></i>
+                                رقم الموظف
+                            </label>
+                            <input type="text" id="employeeId" name="employeeId" required placeholder="أدخل رقم الموظف">
+                        </div>
+                        <div class="form-group">
+                            <label for="fullName">
+                                <i class="fas fa-user"></i>
+                                الاسم الكامل
+                            </label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="أدخل الاسم الكامل">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="jobTitle">
+                                <i class="fas fa-briefcase"></i>
+                                المسمى الوظيفي
+                            </label>
+                            <input type="text" id="jobTitle" name="jobTitle" required placeholder="أدخل المسمى الوظيفي">
+                        </div>
+                        <div class="form-group">
+                            <label for="department">
+                                <i class="fas fa-building"></i>
+                                القسم
+                            </label>
+                            <select id="department" name="department" required>
+                                <option value="">اختر القسم</option>
+                                <option value="internal-medicine">الطب الباطني</option>
+                                <option value="emergency">الطوارئ</option>
+                                <option value="surgery">الجراحة</option>
+                                <option value="pediatrics">طب الأطفال</option>
+                                <option value="cardiology">أمراض القلب</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i>
+                                رقم الهاتف
+                            </label>
+                            <input type="tel" id="phone" name="phone" placeholder="أدخل رقم الهاتف">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i>
+                                البريد الإلكتروني
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="أدخل البريد الإلكتروني">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            حفظ بيانات الموظف
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Movement Data Form -->
+            <div class="form-section">
+                <div class="form-header">
+                    <h3>
+                        <i class="fas fa-exchange-alt"></i>
+                        بيانات الحركة
+                    </h3>
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" onclick="clearForm('movementForm')">
+                            <i class="fas fa-undo"></i>
+                            مسح النموذج
+                        </button>
+                    </div>
+                </div>
+                <form id="movementForm" class="data-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="movementType">
+                                <i class="fas fa-list"></i>
+                                نوع الحركة
+                            </label>
+                            <select id="movementType" name="movementType" required onchange="toggleMovementFields()">
+                                <option value="">اختر نوع الحركة</option>
+                                <option value="attendance">حضور</option>
+                                <option value="absence">غياب</option>
+                                <option value="leave">إجازة</option>
+                                <option value="transfer">تنقل</option>
+                                <option value="delegation">إيفاد</option>
+                                <option value="assignment">تكليف</option>
+                                <option value="scholarship">ابتعاث</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="movementDate">
+                                <i class="fas fa-calendar"></i>
+                                تاريخ الحركة
+                            </label>
+                            <input type="date" id="movementDate" name="movementDate" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Leave Fields -->
+                    <div id="leaveFields" class="movement-fields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="leaveType">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    نوع الإجازة
+                                </label>
+                                <select id="leaveType" name="leaveType">
+                                    <option value="">اختر نوع الإجازة</option>
+                                    <option value="annual">سنوية</option>
+                                    <option value="exceptional">استثنائية</option>
+                                    <option value="maternity">أمومة</option>
+                                    <option value="sick">مرضية</option>
+                                    <option value="emergency">طوارئ</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="leaveDuration">
+                                    <i class="fas fa-clock"></i>
+                                    مدة الإجازة (أيام)
+                                </label>
+                                <input type="number" id="leaveDuration" name="leaveDuration" min="1" max="365">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="leaveStartDate">
+                                    <i class="fas fa-calendar-check"></i>
+                                    تاريخ بداية الإجازة
+                                </label>
+                                <input type="date" id="leaveStartDate" name="leaveStartDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="leaveEndDate">
+                                    <i class="fas fa-calendar-times"></i>
+                                    تاريخ نهاية الإجازة
+                                </label>
+                                <input type="date" id="leaveEndDate" name="leaveEndDate">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transfer Fields -->
+                    <div id="transferFields" class="movement-fields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fromDepartment">
+                                    <i class="fas fa-arrow-right"></i>
+                                    من القسم
+                                </label>
+                                <input type="text" id="fromDepartment" name="fromDepartment" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="toDepartment">
+                                    <i class="fas fa-arrow-left"></i>
+                                    إلى القسم
+                                </label>
+                                <select id="toDepartment" name="toDepartment">
+                                    <option value="">اختر القسم الجديد</option>
+                                    <option value="internal-medicine">الطب الباطني</option>
+                                    <option value="emergency">الطوارئ</option>
+                                    <option value="surgery">الجراحة</option>
+                                    <option value="pediatrics">طب الأطفال</option>
+                                    <option value="cardiology">أمراض القلب</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delegation Fields -->
+                    <div id="delegationFields" class="movement-fields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="delegationType">
+                                    <i class="fas fa-paper-plane"></i>
+                                    نوع الإيفاد
+                                </label>
+                                <select id="delegationType" name="delegationType">
+                                    <option value="">اختر نوع الإيفاد</option>
+                                    <option value="training">تدريب</option>
+                                    <option value="conference">مؤتمر</option>
+                                    <option value="workshop">ورشة عمل</option>
+                                    <option value="scholarship">ابتعاث</option>
+                                    <option value="research">بحث علمي</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="delegationDestination">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    الوجهة
+                                </label>
+                                <input type="text" id="delegationDestination" name="delegationDestination" placeholder="أدخل الوجهة">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="delegationDuration">
+                                    <i class="fas fa-clock"></i>
+                                    مدة الإيفاد (أيام)
+                                </label>
+                                <input type="number" id="delegationDuration" name="delegationDuration" min="1" max="365">
+                            </div>
+                            <div class="form-group">
+                                <label for="delegationCost">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    التكلفة المتوقعة
+                                </label>
+                                <input type="number" id="delegationCost" name="delegationCost" min="0" step="0.01">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="movementNotes">
+                            <i class="fas fa-sticky-note"></i>
+                            ملاحظات إضافية
+                        </label>
+                        <textarea id="movementNotes" name="movementNotes" placeholder="أدخل أي ملاحظات إضافية..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            حفظ بيانات الحركة
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Bulk Data Entry -->
+            <div class="form-section">
+                <div class="form-header">
+                    <h3>
+                        <i class="fas fa-upload"></i>
+                        إدخال البيانات المجمعة
+                    </h3>
+                    <div class="form-actions">
+                        <button class="btn btn-info" onclick="downloadTemplate()">
+                            <i class="fas fa-download"></i>
+                            تحميل القالب
+                        </button>
+                    </div>
+                </div>
+                <div class="bulk-upload">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h4>اسحب الملف هنا أو انقر للاختيار</h4>
+                        <p>يدعم ملفات Excel (.xlsx, .xls) و CSV (.csv)</p>
+                        <input type="file" id="bulkFile" accept=".xlsx,.xls,.csv" style="display: none;">
+                    </div>
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Entries -->
+        <div class="recent-entries">
+            <h3 class="section-title">
+                <i class="fas fa-history"></i>
+                الإدخالات الأخيرة
+            </h3>
+            <div class="entries-table">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>الموظف</th>
+                            <th>نوع الحركة</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentEntriesTable">
+                        <!-- Dynamic content will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <i class="notification-icon"></i>
+            <span class="notification-message"></span>
+        </div>
+    </div>
+
+    <script src="data-entry.js"></script>
+</body>
+</html>

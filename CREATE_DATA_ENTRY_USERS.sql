@@ -1,0 +1,107 @@
+-- إنشاء جدول مدخلي البيانات
+USE health_staff_management;
+
+-- إنشاء جدول مدخلي البيانات
+CREATE TABLE IF NOT EXISTS `data_entry_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL UNIQUE,
+  `password_hash` varchar(255) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `email` varchar(255),
+  `phone` varchar(20),
+  `center_id` int(11) NOT NULL,
+  `is_active` tinyint(1) DEFAULT 1,
+  `last_login` datetime,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  KEY `center_id` (`center_id`),
+  CONSTRAINT `data_entry_users_ibfk_1` FOREIGN KEY (`center_id`) REFERENCES `centers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- إدراج مدخلي البيانات - مجمع الملك عبد الله الطبي (26 مدخل)
+INSERT IGNORE INTO data_entry_users (id, username, password_hash, full_name, email, phone, center_id, is_active, created_at) VALUES
+(1, 'data_entry_kamc_sharaa_505_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الشراع 505', 'kamc.sharaa.de1@health.gov.sa', '0503000001', 1, 1, NOW()),
+(2, 'data_entry_kamc_sharaa_505_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الشراع 505', 'kamc.sharaa.de2@health.gov.sa', '0503000002', 1, 1, NOW()),
+(3, 'data_entry_kamc_abhar_north_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - ابحر الشمالية', 'kamc.abhar.de1@health.gov.sa', '0503000003', 2, 1, NOW()),
+(4, 'data_entry_kamc_abhar_north_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - ابحر الشمالية', 'kamc.abhar.de2@health.gov.sa', '0503000004', 2, 1, NOW()),
+(5, 'data_entry_kamc_alrayan_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الريان', 'kamc.rayan.de1@health.gov.sa', '0503000005', 3, 1, NOW()),
+(6, 'data_entry_kamc_alrayan_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الريان', 'kamc.rayan.de2@health.gov.sa', '0503000006', 3, 1, NOW()),
+(7, 'data_entry_kamc_alsalahiya_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الصالحية', 'kamc.salahiya.de1@health.gov.sa', '0503000007', 4, 1, NOW()),
+(8, 'data_entry_kamc_alsalahiya_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الصالحية', 'kamc.salahiya.de2@health.gov.sa', '0503000008', 4, 1, NOW()),
+(9, 'data_entry_kamc_alsawari_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الصواري', 'kamc.sawari.de1@health.gov.sa', '0503000009', 5, 1, NOW()),
+(10, 'data_entry_kamc_alsawari_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الصواري', 'kamc.sawari.de2@health.gov.sa', '0503000010', 5, 1, NOW()),
+(11, 'data_entry_kamc_alfardous_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الفردوس', 'kamc.fardous.de1@health.gov.sa', '0503000011', 6, 1, NOW()),
+(12, 'data_entry_kamc_alfardous_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الفردوس', 'kamc.fardous.de2@health.gov.sa', '0503000012', 6, 1, NOW()),
+(13, 'data_entry_kamc_almajid_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الماجد', 'kamc.majid.de1@health.gov.sa', '0503000013', 7, 1, NOW()),
+(14, 'data_entry_kamc_almajid_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الماجد', 'kamc.majid.de2@health.gov.sa', '0503000014', 7, 1, NOW()),
+(15, 'data_entry_kamc_alwafa_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الوفاء', 'kamc.wafa.de1@health.gov.sa', '0503000015', 8, 1, NOW()),
+(16, 'data_entry_kamc_alwafa_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الوفاء', 'kamc.wafa.de2@health.gov.sa', '0503000016', 8, 1, NOW()),
+(17, 'data_entry_kamc_bariman_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - بريمان', 'kamc.bariman.de1@health.gov.sa', '0503000017', 9, 1, NOW()),
+(18, 'data_entry_kamc_bariman_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - بريمان', 'kamc.bariman.de2@health.gov.sa', '0503000018', 9, 1, NOW()),
+(19, 'data_entry_kamc_thul_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - ثول', 'kamc.thul.de1@health.gov.sa', '0503000019', 10, 1, NOW()),
+(20, 'data_entry_kamc_thul_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - ثول', 'kamc.thul.de2@health.gov.sa', '0503000020', 10, 1, NOW()),
+(21, 'data_entry_kamc_khalid_model_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - خالد النموذجي', 'kamc.khalid.de1@health.gov.sa', '0503000021', 11, 1, NOW()),
+(22, 'data_entry_kamc_khalid_model_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - خالد النموذجي', 'kamc.khalid.de2@health.gov.sa', '0503000022', 11, 1, NOW()),
+(23, 'data_entry_kamc_dhahban_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - ذهبان', 'kamc.dhahban.de1@health.gov.sa', '0503000023', 12, 1, NOW()),
+(24, 'data_entry_kamc_dhahban_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - ذهبان', 'kamc.dhahban.de2@health.gov.sa', '0503000024', 12, 1, NOW()),
+(25, 'data_entry_kamc_mashrafa_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - مشرفة', 'kamc.mashrafa.de1@health.gov.sa', '0503000025', 13, 1, NOW()),
+(26, 'data_entry_kamc_mashrafa_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - مشرفة', 'kamc.mashrafa.de2@health.gov.sa', '0503000026', 13, 1, NOW());
+
+-- إدراج مدخلي البيانات - مستشفى رابغ (26 مدخل)
+INSERT IGNORE INTO data_entry_users (id, username, password_hash, full_name, email, phone, center_id, is_active, created_at) VALUES
+(27, 'data_entry_rh_alabwa_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الابواء', 'rh.abwa.de1@health.gov.sa', '0503000027', 14, 1, NOW()),
+(28, 'data_entry_rh_alabwa_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الابواء', 'rh.abwa.de2@health.gov.sa', '0503000028', 14, 1, NOW()),
+(29, 'data_entry_rh_aljahfa_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الجحفة', 'rh.jahfa.de1@health.gov.sa', '0503000029', 15, 1, NOW()),
+(30, 'data_entry_rh_aljahfa_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الجحفة', 'rh.jahfa.de2@health.gov.sa', '0503000030', 15, 1, NOW()),
+(31, 'data_entry_rh_aljouba_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الجوبة', 'rh.jouba.de1@health.gov.sa', '0503000031', 16, 1, NOW()),
+(32, 'data_entry_rh_aljouba_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الجوبة', 'rh.jouba.de2@health.gov.sa', '0503000032', 16, 1, NOW()),
+(33, 'data_entry_rh_alsalib_east_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الصليب الشرقي', 'rh.salib.de1@health.gov.sa', '0503000033', 17, 1, NOW()),
+(34, 'data_entry_rh_alsalib_east_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الصليب الشرقي', 'rh.salib.de2@health.gov.sa', '0503000034', 17, 1, NOW()),
+(35, 'data_entry_rh_almarjaniya_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - المرجانية', 'rh.marjaniya.de1@health.gov.sa', '0503000035', 18, 1, NOW()),
+(36, 'data_entry_rh_almarjaniya_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - المرجانية', 'rh.marjaniya.de2@health.gov.sa', '0503000036', 18, 1, NOW()),
+(37, 'data_entry_rh_almarakha_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - المرخة', 'rh.marakha.de1@health.gov.sa', '0503000037', 19, 1, NOW()),
+(38, 'data_entry_rh_almarakha_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - المرخة', 'rh.marakha.de2@health.gov.sa', '0503000038', 19, 1, NOW()),
+(39, 'data_entry_rh_alnuweiba_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - النويبع', 'rh.nuweiba.de1@health.gov.sa', '0503000039', 20, 1, NOW()),
+(40, 'data_entry_rh_alnuweiba_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - النويبع', 'rh.nuweiba.de2@health.gov.sa', '0503000040', 20, 1, NOW()),
+(41, 'data_entry_rh_hajar_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - حجر', 'rh.hajar.de1@health.gov.sa', '0503000041', 21, 1, NOW()),
+(42, 'data_entry_rh_hajar_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - حجر', 'rh.hajar.de2@health.gov.sa', '0503000042', 21, 1, NOW()),
+(43, 'data_entry_rh_rabigh_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - رابغ', 'rh.rabigh.de1@health.gov.sa', '0503000043', 22, 1, NOW()),
+(44, 'data_entry_rh_rabigh_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - رابغ', 'rh.rabigh.de2@health.gov.sa', '0503000044', 22, 1, NOW()),
+(45, 'data_entry_rh_saabar_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - صعبر', 'rh.saabar.de1@health.gov.sa', '0503000045', 23, 1, NOW()),
+(46, 'data_entry_rh_saabar_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - صعبر', 'rh.saabar.de2@health.gov.sa', '0503000046', 23, 1, NOW()),
+(47, 'data_entry_rh_kulliya_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - كلية', 'rh.kulliya.de1@health.gov.sa', '0503000047', 24, 1, NOW()),
+(48, 'data_entry_rh_kulliya_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - كلية', 'rh.kulliya.de2@health.gov.sa', '0503000048', 24, 1, NOW()),
+(49, 'data_entry_rh_mastura_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - مستورة', 'rh.mastura.de1@health.gov.sa', '0503000049', 25, 1, NOW()),
+(50, 'data_entry_rh_mastura_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - مستورة', 'rh.mastura.de2@health.gov.sa', '0503000050', 25, 1, NOW()),
+(51, 'data_entry_rh_maghiniya_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - مغينية', 'rh.maghiniya.de1@health.gov.sa', '0503000051', 26, 1, NOW()),
+(52, 'data_entry_rh_maghiniya_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - مغينية', 'rh.maghiniya.de2@health.gov.sa', '0503000052', 26, 1, NOW());
+
+-- إدراج مدخلي البيانات - مستشفى الملك فهد (24 مدخل)
+INSERT IGNORE INTO data_entry_users (id, username, password_hash, full_name, email, phone, center_id, is_active, created_at) VALUES
+(53, 'data_entry_kfh_bawadi_2_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - البوادي 2', 'kfh.bawadi2.de1@health.gov.sa', '0503000053', 27, 1, NOW()),
+(54, 'data_entry_kfh_bawadi_2_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - البوادي 2', 'kfh.bawadi2.de2@health.gov.sa', '0503000054', 27, 1, NOW()),
+(55, 'data_entry_kfh_bawadi_1_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - البوادي 1', 'kfh.bawadi1.de1@health.gov.sa', '0503000055', 28, 1, NOW()),
+(56, 'data_entry_kfh_bawadi_1_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - البوادي 1', 'kfh.bawadi1.de2@health.gov.sa', '0503000056', 28, 1, NOW()),
+(57, 'data_entry_kfh_alrabwa_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الربوة', 'kfh.rabwa.de1@health.gov.sa', '0503000057', 29, 1, NOW()),
+(58, 'data_entry_kfh_alrabwa_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الربوة', 'kfh.rabwa.de2@health.gov.sa', '0503000058', 29, 1, NOW()),
+(59, 'data_entry_kfh_alrahab_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الرحاب', 'kfh.rahab.de1@health.gov.sa', '0503000059', 30, 1, NOW()),
+(60, 'data_entry_kfh_alrahab_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الرحاب', 'kfh.rahab.de2@health.gov.sa', '0503000060', 30, 1, NOW()),
+(61, 'data_entry_kfh_alsalama_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - السلامة', 'kfh.salama.de1@health.gov.sa', '0503000061', 31, 1, NOW()),
+(62, 'data_entry_kfh_alsalama_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - السلامة', 'kfh.salama.de2@health.gov.sa', '0503000062', 31, 1, NOW()),
+(63, 'data_entry_kfh_alshaati_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الشاطئ', 'kfh.shaati.de1@health.gov.sa', '0503000063', 32, 1, NOW()),
+(64, 'data_entry_kfh_alshaati_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الشاطئ', 'kfh.shaati.de2@health.gov.sa', '0503000064', 32, 1, NOW()),
+(65, 'data_entry_kfh_alsafa_1_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الصفا 1', 'kfh.safa1.de1@health.gov.sa', '0503000065', 33, 1, NOW()),
+(66, 'data_entry_kfh_alsafa_1_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الصفا 1', 'kfh.safa1.de2@health.gov.sa', '0503000066', 33, 1, NOW()),
+(67, 'data_entry_kfh_alsafa_2_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الصفا 2', 'kfh.safa2.de1@health.gov.sa', '0503000067', 34, 1, NOW()),
+(68, 'data_entry_kfh_alsafa_2_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الصفا 2', 'kfh.safa2.de2@health.gov.sa', '0503000068', 34, 1, NOW()),
+(69, 'data_entry_kfh_alfaisaliya_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - الفيصلية', 'kfh.faisaliya.de1@health.gov.sa', '0503000069', 35, 1, NOW()),
+(70, 'data_entry_kfh_alfaisaliya_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - الفيصلية', 'kfh.faisaliya.de2@health.gov.sa', '0503000070', 35, 1, NOW()),
+(71, 'data_entry_kfh_almarwa_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - المروة', 'kfh.marwa.de1@health.gov.sa', '0503000071', 36, 1, NOW()),
+(72, 'data_entry_kfh_almarwa_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - المروة', 'kfh.marwa.de2@health.gov.sa', '0503000072', 36, 1, NOW()),
+(73, 'data_entry_kfh_alnaeem_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - النعيم', 'kfh.naeem.de1@health.gov.sa', '0503000073', 37, 1, NOW()),
+(74, 'data_entry_kfh_alnaeem_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - النعيم', 'kfh.naeem.de2@health.gov.sa', '0503000074', 37, 1, NOW()),
+(75, 'data_entry_kfh_alnahda_1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات أول - النهضة', 'kfh.nahda.de1@health.gov.sa', '0503000075', 38, 1, NOW()),
+(76, 'data_entry_kfh_alnahda_2', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'مدخل بيانات ثاني - النهضة', 'kfh.nahda.de2@health.gov.sa', '0503000076', 38, 1, NOW());
+
